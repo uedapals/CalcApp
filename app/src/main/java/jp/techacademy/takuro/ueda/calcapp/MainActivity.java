@@ -10,8 +10,8 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView mTextView;
     EditText mEditText;
+    EditText mEditText2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button button4 = (Button) findViewById(R.id.button4);
         button4.setOnClickListener(this);
 
-        mTextView = (TextView) findViewById(R.id.textView);
         mEditText = (EditText) findViewById(R.id.editText);
+        mEditText2 = (EditText) findViewById(R.id.editText2);
     }
 
     @Override
@@ -46,11 +46,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if(v.getId() == R.id.button4){
             calc = "/";
         }
-        double editText1; editText1 = 0;
-        double editText2; editText2 = 0;
         Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra("VALUE1", mEditText.getText().toString());
-        intent.putExtra("VALUE2", mEditText.getText().toString());
+        intent.putExtra("VALUE2", mEditText2.getText().toString());
         intent.putExtra("VALUE3", calc);
         startActivity(intent);
 
