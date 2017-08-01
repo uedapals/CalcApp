@@ -12,7 +12,13 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        //emulatorで計算がうまくいかない（結果が全て0.0）→ログでValue1,2が0.0になっている//
+        Intent intent = getIntent();
+        Double result = intent.getDoubleExtra("result", 0);
+
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setText(String.valueOf(result));
+
+        /*emulatorで計算がうまくいかない（結果が全て0.0）→ログでValue1,2が0.0になっている//
         //Double.parseDouble//
         //intやdoubleをちょこちょこ変更してみる//
         Intent intent = getIntent();
@@ -24,7 +30,7 @@ public class SecondActivity extends AppCompatActivity {
         Log.d("VALUE2", String.valueOf(value2));
         Log.d("VALUE3", value3);
 
-        double result = 0;
+        /*double result = 0;
         if (value3.equals("+")){
             result = value1 + value2;
         }else if (value3.equals("-")){
@@ -35,6 +41,8 @@ public class SecondActivity extends AppCompatActivity {
             result = value1 / value2;
         }
         TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(String.valueOf(result));
+        textView.setText(String.valueOf(result));*/
+
+
     }
 }

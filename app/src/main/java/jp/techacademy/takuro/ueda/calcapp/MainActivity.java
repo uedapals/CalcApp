@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,21 +36,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         String calc = null;
-        if(v.getId() == R.id.button1){
+        if (v.getId() == R.id.button1) {
             calc = "+";
-        } else if(v.getId() == R.id.button2){
+        } else if (v.getId() == R.id.button2) {
             calc = "-";
-        } else if(v.getId() == R.id.button3){
+        } else if (v.getId() == R.id.button3) {
             calc = "*";
-        } else if(v.getId() == R.id.button4){
+        } else if (v.getId() == R.id.button4) {
             calc = "/";
         }
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("VALUE1", mEditText.getText().toString());
-        intent.putExtra("VALUE2", mEditText2.getText().toString());
-        intent.putExtra("VALUE3", calc);
-        startActivity(intent);
 
+        Double value1 = Double.parseDouble(mEditText.getText().toString());
+        Double value2 = Double.parseDouble(mEditText2.getText().toString());
+        String value3 = calc;
+
+        double result = 0;
+        if (value3.equals("+")){
+            result = value1 + value2;
+        }else if (value3.equals("-")){
+            result = value1 - value2;
+        }else if (value3.equals("*")){
+            result = value1 * value2;
+        }else if (value3.equals("/")){
+            result = value1 / value2;
+        }
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("result",result);
+        startActivity(intent);
     }
 }
 
